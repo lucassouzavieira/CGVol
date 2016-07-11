@@ -6,32 +6,462 @@
 
         <!-- Reveal.js Default Theme's -->
         <link rel="stylesheet" href="css/reveal.css">
-        <link rel="stylesheet" href="css/theme/moon.css">
+        <link rel="stylesheet" href="css/theme/white.css">
 
         <link rel="stylesheet" href="lib/css/zenburn.css">
 
-        <title>Title</title>
+        <title>Computação Gráfica</title>
     </head>
     <body>
         <div class="reveal">
             <div class="slides">
                 <!-- All slides go here -->
                 <!-- Each section element contains an individual slide -->
-                <section>
-                    <h2 style="text-align: center;">Your First Slide With Reveal.js</h2>
+                <section data-background="imgs/Background.jpg">
+                    <h4 style="text-align: center; font-size: 30px">Universidade Estadual do Maranhão</h4><br><br>
+                    <h4 style="font-size: 30px"> Centro de Ciências Tecnológicas </h4>
+                    <h5 style="font-size: 30px"> Bacharelado em Engenharia de Computação</h5><br><br>
+                    <h2> Visualização Volumétrica </h2>
                 </section>
 
-                <section>
-                    <h2 style="text-align: center;">Play with resources</h2>
-                    <ul>
-                        <li>Reveal.js</li>
-                        <li>jQuery</li>
-                        <li>NVD3.js</li>
-                        <li>D3.js</li>
-                        <li>Processing.js</li>
-                        <li>MathJax</li>
+                <section style="text-align: left;" data-background="imgs/Background.jpg">
+                    <h4 style="text-align: center;">Roadmap</h4>
+                    <ul style="text-align: left; font-size: 20px">
+                        <br><br>
+                        <li>
+                            Introdução
+                            <ul>
+                                <li>Definição</li>
+                                <li>Aplicações da Visualização Volumétrica</li>
+                                <li>Conceitos Básicos</li>
+                            </ul>
+                        </li>
+                        <li>
+                            Técnicas de Visualização Volumétrica
+                            <ul>
+                                <li>Surface rendering</li>
+                                <li>Volume rendering</li>
+                            </ul>
+                        </li>
+                        <li>
+                            Algoritmos de Surface rendering
+                            <ul>
+                                <li>Contour-Connecting</li>
+                                <li>Cuberille</li>
+                            </ul>
+                        </li>
+                        <li>
+                            Algoritmos de Volume Rendering
+                            <ul>
+                                <li>Ray Casting</li>
+                                <li>Splatting</li>
+                                <li>V-Buffer</li>
+                            </ul>
+                        </li>
                     </ul>
                 </section>
+
+                <section data-background="imgs/Background.jpg">
+                    <h4 style="text-align: center; font-size: 30px;">Introdução: Visualização Volumétrica</h4><br>
+                    <p style="text-align: center; font-size: 30px" class="fragment fade-up">
+                        Definição:
+                    </p>
+                    <p style="text-align: left; font-size: 30px" class="fragment fade-up">
+                        Conjunto de processos e técnicas utilizadas na projeção de
+                        dados multidimensionais em um plano de visualização bidimensional.
+                    </p>
+                    <p style="text-align: center; font-size: 30px" class="fragment fade-down">
+                        Objetivos:
+                    </p>
+                    <p style="text-align: left; font-size: 30px" class="fragment fade-down">
+                        Permitir a visualização de detalhes internos de estruturas
+                        multidimensionais, auxiliando a sua análise, além da extração
+                        de características significativas.
+                    </p>
+                </section>
+
+                <section data-background="imgs/Background.jpg" data-transition="none">
+                    <h4 style="text-align: center; font-size: 30px;">Introdução: Aplicações da <br> Visualização Volumétrica</h4><br>
+                    <section data-transition="none">
+                        <p style="text-align: center; font-size: 30px;" class="fragment fade-down">
+                            Medicina <br>
+                            <img src="imgs/Medicina.jpg">
+                        </p>
+                    </section>
+                    <section data-transition="none">
+                        <p style="text-align: center; font-size: 30px;" class="fragment fade-down">
+                            Medicina <br>
+                            <img src="imgs/Medicina2.jpg">
+                        </p>
+                    </section>
+                    <section data-transition="none">
+                        <p style="text-align: center; font-size: 30px;" class="fragment fade-down">
+                            Astronomia <br>
+                            <img src="imgs/Astronomia.jpg">
+                        </p>
+                    </section>
+                    <section data-transition="none">
+                        <p style="text-align: center; font-size: 30px;" class="fragment fade-down">
+                            Física e Astrofísica <br>
+                            <img src="imgs/Astronomia2.jpg">
+                        </p>
+                    </section>
+                    <section data-transition="none">
+                        <p style="text-align: center ; font-size: 30px;" class="fragment fade-down">
+                            Química <br>
+                            <img src="imgs/Quimica.jpg">
+                        </p>
+                    </section>
+                    <section data-transition="none">
+                        <p style="text-align: center; font-size: 30px;" class="fragment fade-down">
+                            Geografia e Geologia <br>
+                            <img src="imgs/Geo.jpg">
+                        </p>
+                    </section>
+                    <section data-transition="none">
+                        <p style="text-align: center; font-size: 30px;" class="fragment fade-down">
+                            Matemática <br>
+                            <img src="imgs/Math.jpg">
+                        </p>
+                    </section>
+                </section>
+
+                <section data-background="imgs/Background.jpg">
+                    <h4 style="text-align: center; font-size: 30px;">Introdução: Conceitos Básicos</h4><br>
+                    <section data-background="imgs/Background.jpg" data-transition="none">
+                        <p style="text-align: center; font-size: 40px">
+                            <i>Voxel</i><br>
+                            <img src="imgs/Voxelgrid.png">
+                        </p>
+                        <p style="text-align: justify; font-size: 30px" class="fragment fade-up">
+                            Representa um valor em um <i>grid</i> regular em um espaço tridimensional.<br>
+                            Um <i>voxel</i> tem sua posição determinada em relação aos demais <i>voxels</i> da imagem.<br>
+                        </p>
+                    </section>
+                    <section data-background="imgs/Background.jpg" data-transition="none">
+                        <p style="text-align: center; font-size: 40px">
+                            <i>Voxel</i><br>
+                            <img src="imgs/voxel1.jpg">
+                        </p>
+                        <p style="text-align: justify; font-size: 30px" class="fragment fade-up">
+                            Cada <i>voxel</i> contém um conjunto variável de dados, a depender da origem dos dados.<br>
+                            Dados Volumétricos costumam ocupar muito espaço em disco e sua visualização demanda intenso processamento<br>
+                            O <i>voxel</i> pode ser definiido por:<br>
+                                $$ v = (x,y, z, S) $$
+                            Onde o elemento <i>S</i> é um conjunto não-vazio de dados relativos à origem e/ou finalidade dos dados.
+                        </p>
+                    </section>
+
+                    <section data-background="imgs/Background.jpg" data-transition="none">
+                        <p style="text-align: center; font-size: 40px">
+                            Principais processos da Visualização Volumétrica
+                        </p>
+                        <ul style="text-align: center; font-size: 30px">
+                            <li>Aquisição
+                                <ul><li class="fragment fade-left">Formação do Volume</li></ul>
+                            </li>
+                            <br><br>
+                            <li>Visualização
+                                <ul>
+                                    <li class="fragment fade-left">Classificação</li>
+                                    <li class="fragment fade-left">Iluminação</li>
+                                    <li class="fragment fade-left">Projeção</li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </section>
+
+                </section>
+
+                <section data-background="imgs/Background.jpg">
+                    <h4 style="text-align: center; font-size: 30px;">Técnicas de Visualização Volumétrica</h4><br><br>
+                    <h5 style="text-align: center; font-size: 30px" class="fragment fade-left" data-fragment-index="1">
+                        Surface Rendering
+                    </h5>
+                    <p style="text-align: center; font-size: 30px" class="fragment fade-left" data-fragment-index="3">
+                        Técnicas de visualização através de superfícies envolvem a extração e a representação
+                        de uma isosuperfície que é posteriormente visualizada através da utilização de técnicas convencionais
+                        da Computação Gráfica.
+                    </p>
+                    <h5 style="text-align: center; font-size: 30px" class="fragment fade-left" data-fragment-index="2">
+                        Volume Rendering
+                    </h5>
+                    <p style="text-align: center; font-size: 30px" class="fragment fade-left" data-fragment-index="4">
+                        A visualização direta de volume consiste em representar o volume através de voxels 3D que são
+                        projetados diretamente em pixels 2D e armazenados como uma imagem, dispensando o uso de primitivas geométricas.
+                    </p>
+                </section>
+
+                <section data-background="imgs/Background.jpg">
+                    <h4 style="text-align: center; font-size: 30px;">Técnicas de Visualização Volumétrica<br><i>Surface Rendering</i></h4><br>
+                    <video data-autoplay src="video/Surface.mp4"></video>
+                </section>
+
+                <section data-background="imgs/Background.jpg">
+                    <h4 style="text-align: center; font-size: 30px;">Técnicas de Visualização Volumétrica<br><i>Volume Rendering</i></h4>
+                    <video data-autoplay src="video/Volume.mp4"></video>
+                </section>
+
+                <section data-background="imgs/Background.jpg" data-transition="none">
+                    <h4 style="text-align: center; font-size: 25px;">Algoritmos de Surface Rendering</h4>
+                    <br><br>
+                    <h4 style="text-align: center; font-size: 30px">Contour-Connecting</h4>
+                </section>
+
+                <section data-background="imgs/Background.jpg" data-transition="none">
+                    <h4 style="text-align: center; font-size: 30px;">Algoritmos de Surface Rendering</h4>
+                    <h4 style="text-align: center; font-size: 30px">
+                        Contour-Connecting
+                    </h4>
+                    <p style="text-align: justify; font-size: 30px">
+                        Contour-Connecting é um método de detecção de superfícies (SF), com
+                        caminhamento pelos objetos (ordem dos objetos), que opera inicialmente em cada fatia
+                        de dados individualmente. Após o usuário especificar um valor de limiarização
+                        (threshold), uma curva fechada conecta estes valores para cada fatia de dados
+                    </p>
+                    <img src="imgs/Countor-Connect.jpg">
+                </section>
+
+                <section data-background="imgs/Background.jpg" data-transition="none">
+                    <h4 style="text-align: center; font-size: 30px;">Algoritmos de Surface Rendering</h4>
+                    <h4 style="text-align: center; font-size: 30px">
+                        Contour-Connecting
+                    </h4>
+                    <p style="text-align: justify; font-size: 30px">
+                        Contour-Connecting é um método de detecção de superfícies (SF), com
+                        caminhamento pelos objetos (ordem dos objetos), que opera inicialmente em cada fatia
+                        de dados individualmente. Após o usuário especificar um valor de limiarização
+                        (threshold), uma curva fechada conecta estes valores para cada fatia de dados
+                    </p>
+                    <img src="imgs/Contour-Counting.png">
+                </section>
+
+                <section data-background="imgs/Background.jpg" data-transition="none">
+                    <h4 style="text-align: center; font-size: 25px;">Algoritmos de Surface Rendering</h4>
+                    <br><br>
+                    <h4 style="text-align: center; font-size: 30px">Cuberille</h4>
+                </section>
+
+                <section data-background="imgs/Background.jpg" data-transition="none">
+                    <h4 style="text-align: center; font-size: 30px;">Algoritmos de Surface Rendering</h4>
+                    <h4 style="text-align: center; font-size: 30px">
+                        Cuberille
+                    </h4>
+                    <p style="text-align: justify; font-size: 30px">
+                        O volume é percorrido procurando-se as células cujos valores nos vértices encontram-se no nível de threshold.
+                        Seis polígonos, um para cada face da célula, são gerados para estas células. A segunda etapa transfere a
+                        descrição geométrica destes polígonos a um visualizador de superfícies para a geração final da imagem.
+                    </p>
+                    <img src="imgs/Cuberille.gif" height="309" width="309">
+                </section>
+
+                <section data-background="imgs/Background.jpg" data-transition="none">
+                    <h4 style="text-align: center; font-size: 30px;">Algoritmos de Surface Rendering</h4>
+                    <br><br>
+                    <h4 style="text-align: left; font-size: 30px" class="fragment fade-right">
+                        <i>Algumas observações</i>
+                    </h4>
+                    <ul>
+                        <li class="fragment fade-right">Visualização apenas de partes dos dados</li>
+                        <li class="fragment fade-right">Perda de detalhes muito pequenos</li>
+                        <li class="fragment fade-right">Inclusão errônea de artefatos na imagem</li>
+                    </ul>
+                </section>
+
+                <section data-background="imgs/Background.jpg" data-transition="none">
+                    <h4 style="text-align: center; font-size: 30px;">Algoritmos de Volume Rendering</h4>
+                    <br><br>
+                    <h4 style="text-align: center; font-size: 30px">Pipeline do Volume Rendering</h4>
+                    <img src="imgs/pipelineVR.png">
+                </section>
+
+                <section data-background="imgs/Background.jpg" data-transition="none">
+                    <h4 style="text-align: center; font-size: 25px;">Algoritmos de Volume Rendering</h4>
+                    <br><br>
+                    <h4 style="text-align: center; font-size: 30px">Ray Casting</h4>
+                </section>
+
+
+                <section data-background="imgs/Background.jpg" data-transition="none">
+                    <h4 style="text-align: center; font-size: 30px;">Algoritmos de Volume Rendering</h4>
+                    <h4 style="text-align: center; font-size: 30px">Ray Casting</h4>
+                    <p style="text-align: justify; font-size: 30px">
+                        De forma simplificada, o ray casting recorre ao lançamento de raios a
+                        partir da janela de observação, para que seja possível perceber qual a
+                        distância entre os objetos que compõem a cena. Abaixo temos um exemplo desse cenário.
+                    </p>
+                    <img src="imgs/raycasting.jpg">
+                </section>
+
+                <section data-background="imgs/Background.jpg" data-transition="none">
+                    <h4 style="text-align: center; font-size: 30px;">Algoritmos de Volume Rendering</h4>
+                    <h4 style="text-align: center; font-size: 30px">Ray Casting</h4>
+                    <p style="text-align: justify; font-size: 25px">
+                        O funcionamento do algoritmo ray casting consiste na varredura dos pixels da
+                        janela de visualização, sendo que haverá um lançamento raios paralelos que partem
+                        de cada pixel na tela em direção aos objetos que serão visualizados. Dessa forma,
+                        os principais elementos são o volume de dados, e suas propriedades,
+                        os parâmetros de visualização, a janela de visualização, e os raios ao
+                        longo dos quais serão processados os pontos de amostragem.
+                    </p>
+                    <img src="imgs/raycasting2.jpg">
+                </section>
+
+                <section data-background="imgs/Background.jpg" data-transition="none">
+                    <h4 style="text-align: center; font-size: 30px;">Algoritmos de Volume Rendering</h4>
+                    <h4 style="text-align: center; font-size: 30px">Ray Casting</h4>
+                    <p style="text-align: justify; font-size: 25px">
+                        O funcionamento do algoritmo ray casting consiste na varredura dos pixels da
+                        janela de visualização, sendo que haverá um lançamento raios paralelos que partem
+                        de cada pixel na tela em direção aos objetos que serão visualizados. Dessa forma,
+                        os principais elementos são o volume de dados, e suas propriedades,
+                        os parâmetros de visualização, a janela de visualização, e os raios ao
+                        longo dos quais serão processados os pontos de amostragem.
+                    </p>
+                    <img src="imgs/raycasting2.jpg">
+                </section>
+
+                <section data-background="imgs/Background.jpg" data-transition="none">
+                    <h4 style="text-align: center; font-size: 30px;">Algoritmos de Volume Rendering</h4>
+                    <h4 style="text-align: center; font-size: 30px">Ray Casting</h4>
+                    <h5 style="text-align: center; font-size: 30px">Etapas do Ray Casting</h5>
+                    <ul style="text-align: justify; font-size: 25px">
+                        <li>Ray Casting</li>
+                        <li>Amostragem</li>
+                        <li>Shading</li>
+                        <li>Composição</li>
+                    </ul><br>
+                    <img src="imgs/Volume_ray_casting.png">
+                </section>
+
+                <section data-background="imgs/Background.jpg" data-transition="none">
+                    <h4 style="text-align: center; font-size: 30px;">Algoritmos de Volume Rendering</h4>
+                    <h4 style="text-align: center; font-size: 30px">Ray Casting</h4>
+                    <p style="text-align: justify; font-size: 25px">
+                        A intensidade de cada pixel é dada por:
+                        $$ I(a, b) = \int_{a}^{b} \! g(s) e^{- \int_{a}^{s} \tau (x) \ dx} \ ds $$
+                        Em que
+                        $$ g(s) , \tau (x) $$ são utilizadas para determinar a cor do voxel resultante.
+                    </p>
+                    <img src="imgs/Raycasting.png">
+                </section>
+
+                <section data-background="imgs/Background.jpg" data-transition="none">
+                    <h4 style="text-align: center; font-size: 25px;">Algoritmos de Volume Rendering</h4>
+                    <br><br>
+                    <h4 style="text-align: center; font-size: 30px">Splatting</h4>
+                </section>
+
+                <section data-background="imgs/Background.jpg" data-transition="none">
+                    <h4 style="text-align: center; font-size: 25px;">Algoritmos de Volume Rendering</h4>
+                    <h4 style="text-align: center; font-size: 30px">Splatting</h4>
+                    <img src="imgs/Splatting4.jpg">
+                </section>
+
+                <section data-background="imgs/Background.jpg" data-transition="none">
+                    <h4 style="text-align: center; font-size: 30px;">Algoritmos de Volume Rendering</h4>
+                    <h4 style="text-align: center; font-size: 30px">Splatting</h4><br>
+                    <p style="text-align: justify; font-size: 25px">
+                        O splatting é um algoritmo de visualização baseado em renderização volumétrica.
+                        Ele pega amostras da imagem de entrada e as reconstrói na imagem de saída a partir
+                        do volume classificado e iluminado. Neste algoritmo são tomados planos paralelos
+                        ao plano da imagem e feita a reconstrução da imagem para todas as amostras dessa
+                        camada da imagem, seguindo de dentro para fora da imagem.
+                    </p>
+                    <img src="imgs/Splatting2.png">
+                </section>
+
+                <section data-background="imgs/Background.jpg" data-transition="none">
+                    <h4 style="text-align: center; font-size: 30px;">Algoritmos de Volume Rendering</h4>
+                    <h4 style="text-align: center; font-size: 30px">Splatting</h4>
+                    <p style="text-align: justify; font-size: 25px">
+                        Neste algoritmo, cada elemento é mapeado no plano da
+                        tela; em seguida, através de um processo de acumulação, tem sua contribuição
+                        adicionada à formação da imagem. O algoritmo termina quando todas as primitivas
+                        tiverem sido mapeadas na tela.
+                    </p>
+                    <img src="imgs/RaySplatting.jpg">
+                </section>
+
+                <section data-background="imgs/Background.jpg" data-transition="none">
+                    <h4 style="text-align: center; font-size: 25px;">Algoritmos de Volume Rendering</h4>
+                    <h4 style="text-align: center; font-size: 30px">Splatting</h4>
+                    <h5 style="text-align: justify; font-size: 30px">O Splatting ocorre em 4 etapas: </h5>
+                    <ul>
+                        <li>Transformação: Percorre o volume</li>
+                        <li>Iluminação: Aplica a Iluminação nos <i>Voxels</i></li>
+                        <li>Reconstrução: Determina a porção da imagem afetada por cada <i>voxel</i></li>
+                        <li>Visibilidade: A partir da cor e da opacidade de cada <i>voxel</i>,
+                            pondera para calcular a contribuição em todos os <i>pixels</i> sob o
+                            <i>footprint</i>
+                        </li>
+                    </ul>
+                    <img src="imgs/footprint.png">
+                </section>
+
+                <section data-background="imgs/Background.jpg" data-transition="none">
+                    <h4 style="text-align: center; font-size: 25px;">Algoritmos de Volume Rendering</h4>
+                    <br><br>
+                    <h4 style="text-align: center; font-size: 30px">V-Buffer</h4>
+                </section>
+
+                <section data-background="imgs/Background.jpg" data-transition="none">
+                    <h4 style="text-align: center; font-size: 25px;">Algoritmos de Volume Rendering</h4>
+                    <h4 style="text-align: center; font-size: 30px">V-Buffer</h4>
+                    <ul>
+                        <li class="fragment fade-left">Citado por diversos autores como uma variação do <i>Splatting</i></li>
+                        <li class="fragment fade-left">Divide o conjunto de dados em células</li>
+                        <li class="fragment fade-left">A renderização é feita célula a célula</li>
+                    </ul><br>
+                    <img src="imgs/Voxel3.jpg"><br>
+                    <img src="imgs/Cell.jpg">
+                </section>
+
+                <section data-background="imgs/Background.jpg" data-transition="none">
+                    <h4 style="text-align: center; font-size: 25px;">Referências</h4><br>
+                    <p style="text-align: justify; font-size: 20px">
+                        MANSSOUR, Isabel Harb; FREITAS, Carla Maria Dal Sasso;
+                        <i><strong>Visualização Volumétrica</strong></i>; <br>
+                        Revista de Informática Téorica e Aplicada - UFRGS - Vol. IX - N. 2 - 2002
+                    </p>
+                    <p style="text-align: justify; font-size: 20px">
+                        PAIVA, Anselmo Cardoso de; SEIXAS, Roberto de Beauclair; GATTASS, Marcelo;
+                        <i><strong>Introdução à Visualização Volumétrica</strong></i>; <br>
+                        PUC - Rio - Jan/1999
+                    </p>
+                    <p style="text-align: justify; font-size: 20px">
+                        DEMÈTRIO, Fernando Jorge Cutrim;
+                        <i><strong>Visualização de dados volumétricos comprimidos baseado na Transformada do cosseno local</strong></i>;<br>
+                        UFMA - 2005
+                    </p>
+                    <p style="text-align: justify; font-size: 20px">
+                        Vaa3D<br>
+                        <a href="http://home.penglab.com/proj/vaa3d/home/index.html">
+                            http://home.penglab.com/proj/vaa3d/home/index.html
+                        </a><br>
+                        Surface Splatting<br>
+                        <a href="https://github.com/sebastianlipponer/surface_splatting">
+                            https://github.com/sebastianlipponer/surface_splatting
+                        </a><br>
+                        Ray Casting<br>
+                        <a href="http://lodev.org/cgtutor/raycasting.html">
+                            http://lodev.org/cgtutor/raycasting.html
+                        </a><br>
+                        Laboratório de Computação Gráfica Aplicada - UEMA<br>
+                        <a href="https://github.com/LabCGUema">
+                            https://github.com/LabCGUema
+                        </a>
+
+                    </p>
+                    <p style="text-align: justify; font-size: 20px">
+                        <strong>Produzido por</strong><br>
+                        Lays Calvacante Ribeiro<br>
+                        Lucas de Souza Vieira<br>
+                        Rodrigo Frazão Maia<br>
+                        Pedro Fellipe Abreu Melo
+                    </p>
+                </section>
+
 
             </div>
         </div>
@@ -48,7 +478,7 @@
             controls: true,
             progress: true,
             slideNumber: true,
-            history: false,
+            history: true,
             keyboard: true,
             overview: true,
             center: false,
@@ -73,11 +503,15 @@
             parallaxBackgroundSize: '',
             parallaxBackgroundHorizontal: null,
             parallaxBackgroundVertical: null,
-            width: 1024,
-            height: 768,
+            width: '100%',
+            height: '100%',
             margin: 0.1,
             minScale: 0.2,
             maxScale: 1.5
+        });
+
+        MathJax.Hub.Config({
+            tex2jax: {inlineMath: [["$", "$"], ["\\(", "\\)"]]}
         });
     </script>
 </html>
